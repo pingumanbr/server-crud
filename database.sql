@@ -1,4 +1,4 @@
-CREATE DATABASE perntodo;
+CREATE DATABASE contacts;
 
 CREATE TABLE contacts(
   todo_id SERIAL PRIMARY KEY,
