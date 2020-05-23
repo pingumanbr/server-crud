@@ -11,8 +11,6 @@ var pgp = require('pg-promise')(/* options */)
 var db = pgp('postgres://postgres:matheuslili@localhost:5432/contacts')
 var {contacts} = ''; 
 
-
-
 //ROUTES//
 
 //create
