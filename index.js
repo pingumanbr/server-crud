@@ -15,11 +15,12 @@ var {contacts} = '';
 
 //create
 
-app.post("/contacts", getContacts = async (req, res) => {
+app.post("/contacts/:name-:address", getContacts = async (req, res) => {
   try {
 
-    const name = req.body.name;
-    const address = req.body.address;
+    var contacts = req.params;
+    const name = contacts.name;
+    const address = contacts.address;
     
      console.log(name);
      console.log(address);     
@@ -36,8 +37,8 @@ await db.multi('INSERT INTO contacts (name,address) VALUES ($1,$2) RETURNING *',
            
     console.log(JSON.stringify(contacts));
     //res.status(201).json({status:'success', message: 'Contato Adicionado'});
-    res.status(201).json(contacts);
-  
+    //res.status(201).json(contacts);
+    return res.send( JSON.stringify( contacts ));
   
   } catch (err) {
     console.error(err.message);
@@ -64,7 +65,7 @@ app.get("/contacts", async (req, res) => {
 });
 
 
-//get a todo
+//get
 
 app.get("/contacts/:id", async (req, res) => {
   const { id } = req.params;
@@ -101,7 +102,7 @@ app.put("/contacts/:id/:name-:address", async (req, res) => {
       console.log('ERROR:', error)
     })
      
-    res.json("Contato Atualizado!");
+    return res.json("Contato Atualizado!");
 });
 
 //delete a todo
@@ -118,7 +119,7 @@ app.delete("/contacts/:id", async (req, res) => {
       console.log('ERROR:', error)
     })
 
-    res.json("Contato Removido!");
+    return res.json("Contato Removido!");
 
 });
 
