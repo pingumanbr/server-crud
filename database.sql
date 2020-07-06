@@ -1,7 +1,7 @@
 CREATE DATABASE contacts;
 
 CREATE TABLE contacts(
-  todo_id SERIAL PRIMARY KEY,
+  contacts_id SERIAL PRIMARY KEY,
   name VARCHAR(255),
   address VARCHAR(255)
 );
